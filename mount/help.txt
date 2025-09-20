@@ -1,7 +1,13 @@
 Монтирование
-docker run -d -p 8080:80 -v "/Users/macbookair/Documents/mount/images:/usr/share/nginx/html/images" --name img images-site
+docker run -d -p 8080:80 -v "/Users/macbookair/Documents/fuzzy-meme-bind-mount/mount/images:/usr/share/nginx/html/images" --name img images-site
 
 Том
 docker volume create myvolume
 myvolume
-macbookair@MacBookAir mount % docker run -d -p 8080:80 -v "myvolume:/usr/share/nginx/html/images" --name img images-site
+docker run -d -p 8080:80 -v "myvolume:/usr/share/nginx/html/images" --name imgV images-site
+
+Копирование в томы
+docker cp /Users/macbookair/Documents/fuzzy-meme-bind-mount/mount/images/image33.jpg imgV:/usr/share/nginx/html/images/image33.jpg
+
+Очистка кэша
+Cmd + Option + R
