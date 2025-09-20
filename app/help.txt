@@ -1,0 +1,13 @@
+Монтирование
+mkdir -p ~/app-data/bind-mount
+echo "0" > ~/app-data/bind-mount/counter.txt
+docker build -t flask-app:latest .
+docker run -d --rm --name flask-app-bind -p 5001:5000 -v ~/app-data/bind-mount:/data flask-app:latest
+cat ~/app-data/bind-mount/counter.txt
+
+Volume
+docker volume create flask-data-volume
+docker run -d --rm --name flask-app-volume -p 5002:5000 -v flask-data-volume:/data flask-app:latest
+docker inspect flask-data-volume
+docker cp flask-app-volume:/data/counter.txt ./volume-counter.txt
+cat ./volume-counter.txt

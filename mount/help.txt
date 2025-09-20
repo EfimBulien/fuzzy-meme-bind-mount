@@ -1,0 +1,7 @@
+Монтирование
+docker run -d -p 8080:80 -v "/Users/macbookair/Documents/mount/images:/usr/share/nginx/html/images" --name img images-site
+
+Том
+docker volume create myvolume
+myvolume
+macbookair@MacBookAir mount % docker run -d -p 8080:80 -v "myvolume:/usr/share/nginx/html/images" --name img images-site
